@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">flip-concept</string>
+    <string name="app_name">WPM</string>
 
     <string name="sign_up_label">Sign Up</string>
     <string name="log_in_label">Log In</string>
@@ -12,4 +12,29 @@
     <string name="confirm_hint">Confirm Password</string>
 
     <string name="or"> Or </string>
+    <string name="pay_number">Pay Number</string>
+    <string name="fname">Full Name</string>
+    <string name="dept">Department</string>
+    <string name="jtitle">Job Title</string>
+    <string name="text_login">Login</string>
+    <string name="text_not_member">No account yet? Create one</string>
+    <string name="hint_name">Full Name</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="text_register">Register</string>
+    <string name="text_title">WPM</string>
+    <string name="hello">Hello,</string>
+    <string name="text_accounts">List</string>
+
+    <string name="error_email_exists">Email Already Exists</string>
+    <string name="error_password_match">Password Does Not Matches</string>
+    <string name="error_valid_email_password">Wrong Email or Password</string>
+
+    <string name="error_message_name">Enter Full Name</string>
+    <string name="error_message_email">Enter Valid Email</string>
+    <string name="error_message_age">Enter Age</string>
+    <string name="error_message_password">Enter Password</string>
+    <string name="success_message">Registration Successful</string>
+
+
 </resources>

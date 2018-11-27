@@ -1,15 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlActivated">@color/color_input_hint</item>
-        <item name="colorControlHighlight">@color/color_input_hint</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorHint">@color/colorText</item>
+        <item name="colorControlNormal">@color/colorText</item>
+        <item name="colorControlActivated">@color/colorText</item>
     </style>
 
     <style name="Widget"/>
@@ -23,7 +22,7 @@
     <style name="Widget.TextEdit">
         <item name="android:layout_height">@dimen/match_parent</item>
         <item name="android:layout_width">@dimen/match_parent</item>
-        <item name="android:textColorHighlight">@color/color_text_highlight</item>
+        <item name="android:textColorHighlight">@color/color_input_hint</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColorHint">@color/color_input_hint</item>
         <item name="android:background">@drawable/input_state</item>
