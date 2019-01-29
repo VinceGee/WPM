@@ -20,7 +20,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = "wpmLite";
@@ -36,8 +36,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     // Login Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
+    private static final String KEY_PAYNUMBER = "pay_number";
+    private static final String KEY_PASSW = "password";
+    private static final String KEY_JOBTITLE= "job_title";
+    private static final String KEY_DEPT= "department";
     private static final String KEY_EMAIL = "email";
-    private static final String KEY_UID = "uid";
+    private static final String KEY_MOBILE = "mobile";
+    private static final String KEY_EXTENSION = "extension";
     private static final String KEY_CREATED_AT = "created_at";
 
     //Saved content Table
@@ -60,7 +65,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_NAME + " TEXT,"
                 + KEY_EMAIL + " TEXT UNIQUE,"
-                + KEY_UID + " TEXT,"
+                + KEY_PAYNUMBER + " TEXT,"
+                + KEY_PASSW + " TEXT,"
+                + KEY_JOBTITLE + " TEXT,"
+                + KEY_DEPT + " TEXT,"
+                + KEY_MOBILE + " TEXT,"
+                + KEY_EXTENSION + " TEXT,"
                 + KEY_CREATED_AT + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
 
@@ -93,13 +103,18 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String name, String email, String uid, String created_at) {
+    public void addUser(String name, String paynumber,String passw,String jobtitle,String department, String email,String mobile,String extension, String created_at) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name); // Name
-        values.put(KEY_EMAIL, email); // Email
-        values.put(KEY_UID, uid); // Email
+        values.put(KEY_PAYNUMBER, paynumber);
+        values.put(KEY_PASSW, passw);
+        values.put(KEY_JOBTITLE, jobtitle);
+        values.put(KEY_DEPT, department);
+        values.put(KEY_EMAIL, email);
+        values.put(KEY_MOBILE, mobile);
+        values.put(KEY_EXTENSION, extension);
         values.put(KEY_CREATED_AT, created_at); // Created At
 
         // Inserting Row
@@ -146,8 +161,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if (cursor.getCount() > 0) {
             user.put("name", cursor.getString(1));
             user.put("email", cursor.getString(2));
-            user.put("uid", cursor.getString(3));
-            user.put("created_at", cursor.getString(4));
+            user.put("pay_number", cursor.getString(3));
+            user.put("password", cursor.getString(4));
+            user.put("job_title", cursor.getString(5));
+            user.put("department", cursor.getString(6));
+            user.put("mobile", cursor.getString(7));
+            user.put("extension", cursor.getString(8));
         }
         cursor.close();
         db.close();

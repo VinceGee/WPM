@@ -35,4 +35,16 @@
     <color name="material_deep_teal_20">#ff80cbc4</color>
     <color name="material_deep_teal_50">#ff009688</color>
 
+    <color name="stroke">#b4b4b4</color>
+    <color name="primary">#000000</color>
+    <color name="primary_dark">#000000</color>
+    <color name="primary_light">#C5CAE9</color>
+    <color name="accent">#000000</color>
+    <color name="primary_text">#f59870</color>
+    <color name="secondary_text">#ffc6c6</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="background">#6163ce</color>
+    <color name="backgroundDark">#353554</color>
+
 </resources>

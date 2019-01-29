@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_scrollFlags="scroll|enterAlways|snap" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                card_view:cardBackgroundColor="@color/white"
+                card_view:cardCornerRadius="2dp"
+                card_view:cardUseCompatPadding="false"
+                card_view:elevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/image_app_logo"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="start|center"                            android:contentDescription="@string/app_name"
+                            android:src="@mipmap/ic_launcher" />
+
+                        <zw.co.vokers.vinceg.wpm.utils.VinceTextView
+                            android:id="@+id/text_emp_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/empl_name"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/colorText"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="5dp">
+
+                            <zw.co.vokers.vinceg.wpm.utils.VinceTextView
+                                android:id="@+id/job_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Systems Administrator"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/colorText"
+                                android:layout_gravity="start"
+                                android:textStyle="bold"/>
+
+                            <zw.co.vokers.vinceg.wpm.utils.VinceTextView
+                                android:id="@+id/pay_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="777"
+                                android:layout_gravity="start"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <!--<android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="10dp"
+                card_view:cardBackgroundColor="@color/white"
+                card_view:cardCornerRadius="2dp"
+                card_view:cardUseCompatPadding="false"
+                card_view:elevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_user" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="5dp">
+
+                            <zw.co.vokers.vinceg.wpm.utils.VinceTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/church"
+                                android:layout_gravity="start"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/colorText"
+                                android:textStyle="bold"/>
+
+                            <zw.co.vokers.vinceg.wpm.utils.VinceTextView
+                                android:id="@+id/text_company"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Church of Christ"
+                                android:layout_gravity="start"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_email" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="5dp">
+
+                            <zw.co.vokers.vinceg.wpm.utils.VinceTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/email"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/colorText"
+                                android:textStyle="bold"
+                                android:layout_gravity="start"
+                                android:autoLink="email"/>
+
+                            <zw.co.vokers.vinceg.wpm.utils.VinceTextView
+                                android:id="@+id/text_email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/maile"
+                                android:layout_gravity="start"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_web" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="5dp">
+
+                            <zw.co.vokers.vinceg.wpm.utils.VinceTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/website"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/colorText"
+                                android:textStyle="bold"
+                                android:layout_gravity="start"
+                                android:autoLink="web"/>
+
+                            <zw.co.vokers.vinceg.wpm.utils.VinceTextView
+                                android:id="@+id/text_website"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/site"
+                                android:layout_gravity="start"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_call" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/contact"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/colorText"
+                                android:textStyle="bold"
+                                android:layout_gravity="start"
+                                android:autoLink="phone"/>
+
+                            <TextView
+                                android:id="@+id/text_contact"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/contactno"
+                                android:layout_gravity="start"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>-->
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="10dp"
+                card_view:cardBackgroundColor="@color/white"
+                card_view:cardCornerRadius="2dp"
+                card_view:cardUseCompatPadding="false"
+                card_view:elevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <zw.co.vokers.vinceg.wpm.utils.VinceTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Job Description"
+                        android:layout_marginStart="5dp"
+                        android:layout_gravity="start"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp" />
+
+
+                    <WebView
+                        android:id="@+id/jobDescWebView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

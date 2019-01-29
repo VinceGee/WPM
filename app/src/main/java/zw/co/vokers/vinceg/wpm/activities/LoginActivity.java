@@ -2,6 +2,7 @@ package zw.co.vokers.vinceg.wpm.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -22,12 +23,16 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
 import zw.co.vokers.vinceg.wpm.AppController;
 import zw.co.vokers.vinceg.wpm.R;
 import zw.co.vokers.vinceg.wpm.db.DatabaseHelper;
+import zw.co.vokers.vinceg.wpm.db.DbConnection;
 import zw.co.vokers.vinceg.wpm.db.SQLiteHandler;
 import zw.co.vokers.vinceg.wpm.db.SessionManager;
 import zw.co.vokers.vinceg.wpm.utils.AppConfig;
@@ -53,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
+    Connection conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +105,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (!paynumber.isEmpty() && !password.isEmpty()) {
                     // login user
                     checkLogin(paynumber, password);
+
+                     //new checkLogin().execute("");
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
@@ -190,6 +198,75 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         inputPassword.setText(null);
     }
 
+    /*class checkLogin extends AsyncTask<String,String,String> {
+        String z="";
+        Boolean IsSuccess=false;
+        private final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
+
+        *//*protected void onPreExecute() {
+            this.dialog.setMessage("Logging in...");
+            this.dialog.show();
+        }*//*
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            DbConnection connect=new DbConnection();
+            String payNumber=inputPNumber.getText().toString();
+            String password=inputPassword.getText().toString();
+            if(payNumber.trim().equals("")||password.trim().equals("")) {
+                z="Please enter username and password";
+            }
+            else {
+                try {
+                    conn=connect.connectionclass();
+                    if(conn==null) {
+                        z="Please check your internet connection.";
+                    }
+                    else {
+                        //"SELECT * FROM users WHERE pay_number = '" . $pay_number. "' and password = '" . md5($password) . "'"
+                        String query="SELECT * FROM users WHERE pay_number='"+payNumber+"' AND password='"+password+"';";
+                        Statement stmt=conn.createStatement();
+                        ResultSet rs=stmt.executeQuery(query);
+                        Log.e("RRRRRRRR",query);
+                        Log.e("TTTTTTTT",stmt.toString());
+                        Log.e("YYYYYYYY",rs.toString());
+
+                        if(rs.next()) {
+                            z="Login Successful";
+                            IsSuccess=true;
+                            Intent i=new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(i);
+                        }
+                        else {
+                            z="Invalid Credientals";
+                            IsSuccess=false;
+
+                        }
+                    }
+
+                }
+                catch (Exception ex) {
+                    IsSuccess=false;
+                    z=ex.getMessage();
+
+                }
+            }
+
+            return null;
+        }
+
+        protected void onPostExecute(final Boolean result) {
+            if (this.dialog.isShowing()) {
+                this.dialog.dismiss();
+            }
+            if (result.booleanValue()) {
+                //also show register success dialog
+            }
+        }
+
+    }*/
+
     /**
      * function to verify login details in mysql db
      * */
@@ -207,6 +284,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Log.d(TAG, "Login Response: " + response.toString());
                 hideDialog();
 
+
                 try {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
@@ -218,15 +296,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         session.setLogin(true);
 
                         // Now store the user in SQLite
-                        String uid = jObj.getString("uid");
+                        //String uid = jObj.getString("id");
 
                         JSONObject user = jObj.getJSONObject("user");
                         String name = user.getString("name");
+                        String payNumber = user.getString("pay_number");
+                        String userPassword = user.getString("password");
+                        String jobTitle = user.getString("job_title");
+                        String dept = user.getString("department");
                         String email = user.getString("email");
+                        String mobile = user.getString("mobile");
+                        String extension = user.getString("extension");
                         String created_at = user.getString("created_at");
-
+Log.e("UUUUUUUUUUU",dept);
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at);
+                        db.addUser(name, payNumber, userPassword,jobTitle, dept, email,mobile,extension, created_at);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);

@@ -18,65 +18,13 @@
     tools:context=".activities.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+    <FrameLayout
+        android:id="@+id/about"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <zw.co.vokers.vinceg.wpm.utils.VinceTextView
-            android:paddingTop="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/verse1"
-            />
+    </FrameLayout>
 
-        <zw.co.vokers.vinceg.wpm.utils.VinceTextView
-            android:paddingTop="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/verse2"
-            />
 
-        <zw.co.vokers.vinceg.wpm.utils.VinceTextView
-            android:paddingTop="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/purpose"
-            />
-
-        <zw.co.vokers.vinceg.wpm.utils.VinceTextView
-            android:paddingTop="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/mission"
-            />
-
-        <zw.co.vokers.vinceg.wpm.utils.VinceTextView
-            android:paddingTop="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/vision"
-            />
-
-        <zw.co.vokers.vinceg.wpm.utils.VinceTextView
-            android:paddingTop="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/values"
-            />
-    </LinearLayout>
 </RelativeLayout>
 </ScrollView>

@@ -3,6 +3,7 @@ package zw.co.vokers.vinceg.wpm.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +24,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +33,8 @@ import zw.co.vokers.vinceg.wpm.db.SQLiteHandler;
 import zw.co.vokers.vinceg.wpm.db.SessionManager;
 import zw.co.vokers.vinceg.wpm.dialog.SweetAlertDialog;
 import zw.co.vokers.vinceg.wpm.utils.AppConfig;
+import zw.co.vokers.vinceg.wpm.utils.aboututils.AboutBuilder;
+import zw.co.vokers.vinceg.wpm.utils.aboututils.AboutView;
 
 /**
  * Created by Vince G on 28/11/2018
@@ -44,11 +47,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final String TAG = MainActivity.class.getSimpleName();
     private static int countWinsList;
     private static int countWinsVerification;
+    String name, email,extension, job_title, department,pay_number,mobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DashboardHelper.with(this).init();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -63,7 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View hView =  navigationView.getHeaderView(0);
 
         TextView nameView = (TextView) hView.findViewById(R.id.nameView);
-        TextView emailView = (TextView) hView.findViewById(R.id.emailView);
+        TextView jobTitle = (TextView) hView.findViewById(R.id.jTitleView);
+        TextView payNumber = (TextView) hView.findViewById(R.id.payNumberView);
 
         ////////////////////LOGOUT////////////////////////////////////////
         // SqLite database handler
@@ -83,11 +89,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Fetching user details from SQLite
         HashMap<String, String> user = db.getUserDetails();
 
-        String name = user.get("name");
-        String email = user.get("email");
-
+        name = user.get("name");
+        email = user.get("email");
+        pay_number = user.get("pay_number");
+        department = user.get("department");
+        job_title = user.get("job_title");
+        extension = user.get("extension");
+        mobile = user.get("mobile");
+Log.e("DDDDDDDDDDDDDDD",department);
         nameView.setText(name);
-        emailView.setText(email);
+        jobTitle.setText(job_title);
+        payNumber.setText(pay_number);
 
 
         if(!db.isContentEmpty()){
@@ -112,6 +124,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 db.deleteSavedContent();
                 //  Toast.makeText(getApplicationContext(),"Win updated",Toast.LENGTH_LONG).show();
             }
+
+            loadAbout();
         }
         //
 
@@ -146,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if(id == R.id.menu_logout){
             new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                     .setCustomImage(R.mipmap.ic_launcher)
-                    .setTitleText("Cru.comm")
+                    .setTitleText("WPM")
                     .setContentText("Are you sure you want to logout?")
                     .setCancelText("No,cancel please!")
                     .setConfirmText("Logout!")
@@ -209,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                     .setCustomImage(R.mipmap.ic_launcher)
-                    .setTitleText("Cru.comm")
+                    .setTitleText("WPM")
                     .setContentText("Are you sure you want to logout?")
                     .setCancelText("No,cancel please!")
                     .setConfirmText("Logout!")
@@ -218,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         @Override
                         public void onClick(SweetAlertDialog sDialog) {
                             // reuse previous dialog instance, keep widget user state, reset them if you need
-                            sDialog.setTitleText("Cru.comm")
+                            sDialog.setTitleText("WPM")
                                     .setContentText("You have cancelled the logout")
                                     .setConfirmText("OK")
                                     .showCancelButton(false)
@@ -352,5 +366,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (pDialog.isShowing())
             pDialog.dismiss();
     }*/
+
+    public void loadAbout() {
+        final FrameLayout flHolder = findViewById(R.id.about);
+
+        AboutBuilder builder = AboutBuilder.with(this)
+                .setAppIcon(R.mipmap.ic_launcher)
+                .setAppName(R.string.app_name)
+                .setPhoto(R.mipmap.ic_launcher)
+                .setCover(R.drawable.header_profile)
+                .setLinksAnimated(true)
+                .setDividerDashGap(13)
+                .setName(name)
+                //.setSubTitle(department)
+                .setSubTitle(job_title)
+                //.setSubTitle("Pay Number: "+ pay_number)
+                .setLinksColumnsCount(3)
+                .setBrief("With support from a dynamic Operations team of qualified and dedicated personnel, and a workshop staff of experienced artisans coupled with our network of strategically located support structures, we ensure the best service delivery from the point we pick up your cargo right up to delivery.")
+
+                .addEmailLink("itprojects@whelson.co.zw")
+                .addWebsiteLink("http://www.whelson.co.zw")
+                .addBitbucketLink();
+
+        AboutView view = builder.build();
+
+        flHolder.addView(view);
+    }
 }
 
