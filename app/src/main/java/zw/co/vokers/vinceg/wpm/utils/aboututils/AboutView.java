@@ -39,13 +39,13 @@ public final class AboutView extends FrameLayout {
     private TextView tvSubTitle;
     private TextView tvBrief;
 
-    private TextView tvAppName;
-    private TextView tvAppTitle;
-    private ImageView ivAppIcon;
+    //private TextView tvAppName;
+    //private TextView tvAppTitle;
+    //private ImageView ivAppIcon;
 
-    private View appHolder;
+    //private View appHolder;
     private AutoFitGridLayout vLinks;
-    private AutoFitGridLayout vActions;
+    //private AutoFitGridLayout vActions;
 
     private Boolean isDarker;
     private int iconColor = 0;
@@ -92,13 +92,13 @@ public final class AboutView extends FrameLayout {
         tvName = findViewById(R.id.name);
         tvSubTitle = findViewById(R.id.sub_title);
         tvBrief = findViewById(R.id.brief);
-        tvAppName = findViewById(R.id.app_name);
-        tvAppTitle = findViewById(R.id.app_title);
-        ivAppIcon = findViewById(R.id.app_icon);
+        //tvAppName = findViewById(R.id.app_name);
+        //tvAppTitle = findViewById(R.id.app_title);
+        //ivAppIcon = findViewById(R.id.app_icon);
 
         vLinks = findViewById(R.id.links);
-        vActions = findViewById(R.id.actions);
-        appHolder = findViewById(R.id.app_holder);
+        //vActions = findViewById(R.id.actions);
+        //appHolder = findViewById(R.id.app_holder);
     }
 
     public void build(@NonNull AboutBuilder bundle) {
@@ -116,8 +116,8 @@ public final class AboutView extends FrameLayout {
         tvBrief.setText(bundle.getBrief());
         VisibleUtil.handle(tvBrief, bundle.getBrief());
 
-        tvAppName.setText(bundle.getAppName());
-        tvAppTitle.setText(bundle.getAppTitle());
+        //tvAppName.setText(bundle.getAppName());
+        //tvAppTitle.setText(bundle.getAppTitle());
 
         setupBitmaps(bundle);
 
@@ -128,24 +128,24 @@ public final class AboutView extends FrameLayout {
         if (bundle.getBackgroundColor() != 0)
             cvHolder.setCardBackgroundColor(bundle.getBackgroundColor());
 
-        VisibleUtil.handle(appHolder, bundle.getAppName());
+        //VisibleUtil.handle(appHolder, bundle.getAppName());
 
-        if (appHolder.getVisibility() == VISIBLE)
-            setDivider(bundle, appHolder);
+        /*if (appHolder.getVisibility() == VISIBLE)
+            setDivider(bundle, appHolder);*/
 
         setDivider(bundle, vLinks);
 
         if (bundle.getLinksColumnsCount() != 0)
             vLinks.setColumnCount(bundle.getLinksColumnsCount());
 
-        if (bundle.getActionsColumnsCount() != 0)
-            vActions.setColumnCount(bundle.getActionsColumnsCount());
+       /* if (bundle.getActionsColumnsCount() != 0)
+            vActions.setColumnCount(bundle.getActionsColumnsCount());*/
 
         vLinks.setVisibility(bundle.getLinks().isEmpty() ? GONE : VISIBLE);
-        vActions.setVisibility(bundle.getActions().isEmpty() ? GONE : VISIBLE);
+        //vActions.setVisibility(bundle.getActions().isEmpty() ? GONE : VISIBLE);
 
         loadLinks(bundle);
-        loadActions(bundle);
+        //loadActions(bundle);
     }
 
     private void setupTextColors(AboutBuilder bundle) {
@@ -203,7 +203,7 @@ public final class AboutView extends FrameLayout {
     private void setupBitmaps(AboutBuilder bundle) {
         setBitmap(ivCover, bundle.getCover());
         setBitmap(ivPhoto, bundle.getPhoto());
-        setBitmap(ivAppIcon, bundle.getAppIcon());
+        //setBitmap(ivAppIcon, bundle.getAppIcon());
     }
 
     private void setBitmap(@NonNull ImageView iv, @Nullable Bitmap bitmap) {
@@ -237,11 +237,11 @@ public final class AboutView extends FrameLayout {
         }, animationDelay);
     }
 
-    private void loadActions(AboutBuilder bundle) {
+   /* private void loadActions(AboutBuilder bundle) {
         for (Item item : bundle.getActions()) {
             addItem(vActions, R.layout.xab_each_action, item);
         }
-    }
+    }*/
 
     private View addItem(ViewGroup holder, int layout, Item item) {
         View view = layoutInflater.inflate(layout, null);

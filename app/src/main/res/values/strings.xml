@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">WPM</string>
 
+    <string name="dev_phone">+2634754709</string>
+    <string name="creds">Special thanks goes to Prosper Jambo for his assistance. The Spoken Word Ministry - Belvedere Projector Team manages and edits this application.</string>
+
+
     <string name="sign_up_label">Sign Up</string>
     <string name="log_in_label">Log In</string>
 

@@ -3,7 +3,6 @@ package zw.co.vokers.vinceg.wpm.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -202,24 +201,19 @@ Log.e("DDDDDDDDDDDDDDD",department);
         if (id == R.id.nav_home) {
             Intent home = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(home);
-        } else if (id == R.id.nav_win) {
+        } else if (id == R.id.nav_jdesc) {
 
-        } else if (id == R.id.nav_build) {
+        } else if (id == R.id.nav_directory) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_proce) {
 
-        } else if (id == R.id.nav_password) {
-            Intent changePwd = new Intent(getApplicationContext(), ChangePassword.class);
-            startActivity(changePwd);
-        } else if (id == R.id.nav_figures) {
+        } else if (id == R.id.nav_abtwhn) {
+            startActivity(new Intent(getApplicationContext(), AboutWhelson.class));
+        }  else if (id == R.id.nav_profile) {
+            startActivity(new Intent(getApplicationContext(), AboutProfile.class));
+        } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_abtcru) {
-
-        } else if (id == R.id.nav_abtapp) {
-
-        }else if (id == R.id.nav_settings) {
-
-        }else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout) {
 
             new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                     .setCustomImage(R.mipmap.ic_launcher)
